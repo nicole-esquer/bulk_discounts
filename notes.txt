@@ -1,0 +1,15 @@
+csv files:
+rails db:{drop,create,migrate}
+bundle exec rake import:create_customers           
+bundle exec rake import:create_merchants
+bundle exec rake import:create_items
+bundle exec rake import:create_invoices
+bundle exec rake import:create_invoice_items
+bundle exec rake import:create_transactions
+
+heroku troubleshooting:
+heroku restart 
+heroku restart 
+heroku run 
+rails db:migrate 
+heroku run rails csv_load:all
