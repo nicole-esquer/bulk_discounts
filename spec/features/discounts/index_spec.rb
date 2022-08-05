@@ -16,13 +16,15 @@ RSpec.describe 'discounts index page' do
    end
 
    xit 'has link to discount show page' do
-      click_on("Discount Page")
+      click_on('See more information about Discount')
 
       expect(current_path).to eq("/merchant/#{@merchant1}/discounts/#{@discount10}")
     end
 
    it 'has a link to create a new discount' do
-      
+      click_on('Create New Discount')
+      save_and_open_page
+      expect(current_path).to eq(new_merchant_discount_path(@merchant1))
    end
 
 end
