@@ -13,3 +13,6 @@ heroku restart
 heroku run 
 rails db:migrate 
 heroku run rails csv_load:all
+
+simplecov:
+open coverage/index.html
