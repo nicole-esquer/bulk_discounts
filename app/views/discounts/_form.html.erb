@@ -1,7 +1,9 @@
 <%= form_with model: [@merchant, @discount], local: true do |f| %>
-  <%= f.label 'Quantity threshhold:' %>
-  <%= f.number_field :quantity %>
-  <%= f.label 'Percentage off:' %>
-  <%= f.number_field :percentage %>
-  <%= f.submit %>
+  <%= f.label :percentage %>
+  <%= f.text_field :percentage %>
+
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+
+  <%= f.submit 'Edit Discount' %>
 <% end %>
