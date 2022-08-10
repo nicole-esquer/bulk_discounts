@@ -7,8 +7,8 @@ RSpec.describe 'discount edit' do
       
       visit merchant_discount_path(merchant1, discount10)
 
-      fill_in :percentage, with: 30
-      fill_in :quantity, with: 30
+      fill_in 'Percentage Off', with: 30
+      fill_in 'Quantity Threshhold', with: 30
 
       click_on 'Update Discount'
 
