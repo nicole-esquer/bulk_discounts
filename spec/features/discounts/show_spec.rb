@@ -10,7 +10,17 @@ RSpec.describe 'merchant discount show' do
 
       expect(page).to have_content(@discount10.percentage)
       expect(page).to have_content(@discount10.quantity)
-
-      save_and_open_page
    end
+
+   it 'has a link to edit the discount' do
+      merchant1 = Merchant.create!(name: 'Hair Care')
+
+      discount10 = merchant1.discounts.create!(percentage: 10, quantity: 10)
+
+      visit merchant_discount_path(merchant1, discount10)
+
+      click_on 'Edit Discount', match: :first
+
+      expect(current_path).to eq(edit_merchant_discount_path(merchant1, discount10))
+    end
 end

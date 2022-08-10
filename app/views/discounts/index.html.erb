@@ -3,10 +3,8 @@
 
 
 <% @merchant.discounts.each do |discount| %>
-   <div id='discount-<%= discount.id %>'>
-      <p>Quantity Threshhold: <%= discount.quantity %></p>
-      <p>Percentage Off: <%= discount.percentage %>%</p>
-      <p><%= link_to "Discount Page", merchant_discount_path(@merchant, discount) %></p>
-      <p><%= link_to "Delete Discount", merchant_discount_path(@merchant, discount), method: :delete %></p>
-   </div>
+   <p>Quantity Threshhold: <%= discount.quantity %></p>
+   <p>Percentage Off: <%= discount.percentage %>%</p>
+   <p><%= link_to "See more information about Discount", merchant_discount_path(@merchant, discount) %></p>
+   <p><%= link_to "Delete Discount", merchant_discount_path(@merchant, discount), method: :delete %></p>
 <% end %>

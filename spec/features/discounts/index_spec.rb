@@ -15,33 +15,31 @@ RSpec.describe 'discounts index page' do
       expect(page).to have_content(@discount10.percentage)
    end
 
-   xit 'has link to discount show page' do
-      click_on('See more information about Discount')
+   it 'has link to discount show page' do
+      click_on('See more information about Discount', match: :first)
 
-      expect(current_path).to eq("/merchant/#{@merchant1}/discounts/#{@discount10}")
+      expect(current_path).to eq(merchant_discount_path(@merchant1, @discount10))
     end
 
-   xit 'has a link to create a new discount' do
+   it 'has a link to create a new discount' do
       click_on('Create New Discount')
    
       expect(current_path).to eq(new_merchant_discount_path(@merchant1))
 
-      fill_in(:quantity, with: 30)
-      fill_in(:percentage, with: 30)
+      fill_in "Quantity", with: 30
+      fill_in "Percentage", with: 30
 
-      click_on 'Create New Discount'
+      click_on('Create New Discount', match: :first)
 
       expect(page).to have_content('30%')
       expect(page).to have_content(30)
    end
 
    it 'has a link to delete a discount' do
-      @discount100 = @merchant1.discounts.create!(percentage: 100, quantity: 1)
-
-      click_on "Delete Discount", match: :first
+      click_on('Delete Discount', match: :first)
       
-      expect(page).to_not have_content(@discount100.percentage)
-      expect(page).to_not have_content(@discount100.quantity)
-      expect(current_page).to eq(merchant_discounts_path(@merchant1))
+      expect(page).to_not have_content(@discount10.percentage)
+      expect(page).to_not have_content(@discount10.quantity)
+      expect(current_path).to eq(merchant_discounts_path(@merchant1))
    end
 end
