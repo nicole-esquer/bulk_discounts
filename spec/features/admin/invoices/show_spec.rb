@@ -4,6 +4,10 @@ describe 'Admin Invoices Index Page' do
   before :each do
     @m1 = Merchant.create!(name: 'Merchant 1')
 
+    @discount10 = @m1.discounts.create(percentage: 10, quantity: 10)
+    @discount15 = @m1.discounts.create(percentage: 15, quantity: 15)
+    @discount20 = @m1.discounts.create(percentage: 20, quantity: 20)
+
     @c1 = Customer.create!(first_name: 'Yo', last_name: 'Yoz', address: '123 Heyyo', city: 'Whoville', state: 'CO', zip: 12345)
     @c2 = Customer.create!(first_name: 'Hey', last_name: 'Heyz')
 
