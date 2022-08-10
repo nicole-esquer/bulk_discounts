@@ -41,10 +41,9 @@
 
 <% @invoice.invoice_items.each do |invoice_item| %>
   <% if invoice_item.discount_id != nil %>
-    <%= link_to 'Discount', merchant_bulk_discount_path(@merchant, invoice_item.discounts ) %>
+    <%= link_to 'Discount', merchant_discount_path(@merchant, invoice_item.discounts ) %>
   <% end %>
 <% end %>
-
 
     <tbody>
       <% @invoice.invoice_items.each do |i| %>
