@@ -29,7 +29,7 @@ class Invoice < ApplicationRecord
  def merchant_discounted_revenue(merchant_id)
     discounted = invoice_items.joins(:item)
                 .where('items.merchant_id = ?', merchant_id)
-                .sum('(invoice_items.quantity * invoice_items.discount * invoice_items.unit_price) / 100')
+                .sum('(invoice_items.quantity * invoice_items.discounts * invoice_items.unit_price) / 100')
 
     merchant_total_revenue(merchant_id) - discounted
   end
