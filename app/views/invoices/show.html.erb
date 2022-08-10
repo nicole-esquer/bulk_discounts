@@ -4,7 +4,8 @@
     <ul class="nav navbar-nav">
       <li><%= link_to 'Dashboard', merchant_dashboard_index_path, style: 'pull-right' %>
       <%= link_to 'My Items', merchant_items_path(@merchant), style: 'pull-right' %>
-      <%= link_to 'My Invoices', merchant_invoices_path(@merchant), style: 'pull-right' %></li>
+      <%= link_to 'My Invoices', merchant_invoices_path(@merchant), style: 'pull-right' %>
+      <%= link_to 'My Discounts', merchant_discount_path(@merchant), style: 'pull-right' %></li>
     </ul>
   </nav>
 </div>
@@ -37,6 +38,13 @@
         <th class="th1">Status</th>
       </tr>
     </thead>
+
+<% @invoice.invoice_items.each do |invoice_item| %>
+  <% if invoice_item.discount_id != nil %>
+    <%= link_to 'Discount', merchant_bulk_discount_path(@merchant, invoice_item.discounts ) %>
+  <% end %>
+<% end %>
+
 
     <tbody>
       <% @invoice.invoice_items.each do |i| %>
