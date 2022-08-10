@@ -30,6 +30,7 @@ class Admin::MerchantsController < ApplicationController
   end
 
   private
+  
   def set_merchant
     @merchant = Merchant.find(params[:id])
   end
